@@ -42,7 +42,7 @@ app.use('/',userRouter)
 connectDB()
 .then(()=>{
     console.log("DataBase Connected Successfully...")
-    app.listen(process.env.PORT, () => {
+    app.listen(7777, () => {
       console.log("Server Started Sucessfully...");
     });
 })
