@@ -42,7 +42,7 @@ app.use('/',userRouter)
 connectDB()
 .then(()=>{
     console.log("DataBase Connected Successfully...")
-    app.listen(3031, () => {
+    app.listen(3032, () => {
       console.log("Server Started Sucessfully...");
     });
 })
