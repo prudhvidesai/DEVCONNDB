@@ -16,7 +16,7 @@ const cors = require('cors')
 
 const app = express()
 
-require('dotenv').config()
+
 
 app.use(
   cors({
@@ -42,7 +42,7 @@ app.use('/',userRouter)
 connectDB()
 .then(()=>{
     console.log("DataBase Connected Successfully...")
-    app.listen(3030, () => {
+    app.listen(3031, () => {
       console.log("Server Started Sucessfully...");
     });
 })
