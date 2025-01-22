@@ -99,8 +99,7 @@ userRouter.get('/user/feed',userAuth,async(req,res)=>{
             { _id: { $ne: loggedUser._id } },
           ],
         }).select("userName email age gender about imageUrl ")
-          .skip(skip)
-          .limit(limit);
+         
 
         res.send(feedData)
 
