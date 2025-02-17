@@ -12,18 +12,32 @@ const requestRouter = require("./routes/requestRoute");
 
 const userRouter = require("./routes/userRoute");
 
+const chatRouter = require("./routes/chatRoute");
+
+
+const http = require("http")
+
+
+
+
 const cors = require("cors");
+const initialiseSocket = require("./utils/socket");
 
 require("dotenv").config();
 
 const app = express();
 
+
 app.use(
   cors({
-    origin: "http://localhost:5176",
+    origin: "http://localhost:5174",
     credentials: true,
   })
 );
+
+const server = http.createServer(app);
+
+initialiseSocket(server)
 
 app.use(express.json());
 
@@ -37,10 +51,12 @@ app.use("/", requestRouter);
 
 app.use("/", userRouter);
 
+app.use("/",chatRouter)
+
 connectDB()
   .then(() => {
     console.log("DataBase Connected Successfully...");
-    app.listen(process.env.PORT, () => {
+    server.listen(process.env.PORT, () => {
       console.log("Server Started Sucessfully...");
     });
   })
